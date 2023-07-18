@@ -40,12 +40,12 @@ class Calculator {
     }
 }
 
-let cal = Calculator()
-let addResult = cal.calculate(oper: "+", firstNumber: 10, secondNumber: 5)
-let subtractResult = cal.calculate(oper: "-", firstNumber: 10, secondNumber: 5)
-let multiplyResult = cal.calculate(oper: "*", firstNumber: 10, secondNumber: 5)
-let divideResult = cal.calculate(oper: "/", firstNumber: 10, secondNumber: 5)
-let remainderResult = cal.calculate(oper: "%", firstNumber: 10, secondNumber: 3)
+let calculator = Calculator()
+let addResult = calculator.calculate(oper: "+", firstNumber: 10, secondNumber: 5)
+let subtractResult = calculator.calculate(oper: "-", firstNumber: 10, secondNumber: 5)
+let multiplyResult = calculator.calculate(oper: "*", firstNumber: 10, secondNumber: 5)
+let divideResult = calculator.calculate(oper: "/", firstNumber: 10, secondNumber: 5)
+let remainderResult = calculator.calculate(oper: "%", firstNumber: 10, secondNumber: 3)
 
 print("addResult : \(addResult)")
 print("subtractResult : \(subtractResult)")
@@ -53,9 +53,9 @@ print("multiplyResult : \(multiplyResult)")
 print("divideResult : \(divideResult)")
 print("remainderResult : \(remainderResult)")
 
-let wrongOperator = cal.calculate(oper: " ", firstNumber: 10, secondNumber: 5)
+let wrongOperator = calculator.calculate(oper: " ", firstNumber: 10, secondNumber: 5)
 print("wrongOperator : \(wrongOperator)")
 
-let wrongSecondNum = cal.calculate(oper : "/", firstNumber: 10, secondNumber: 0)
+let wrongSecondNum = calculator.calculate(oper : "/", firstNumber: 10, secondNumber: 0)
 print("wrongSecondNum : \(wrongSecondNum)")
 
