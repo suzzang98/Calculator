@@ -7,7 +7,7 @@ class Calculator {
         self.secondNumber = secondNumber
     }
     
-    func calculate(oper: String) -> Double {
+    func calculate(_ oper: String) -> Double {
         var operation: AbstractOperation
         switch oper {
         case "+":
@@ -63,16 +63,16 @@ class DivideOperation: AbstractOperation {
 let calculator = Calculator(firstNumber: 10, secondNumber: 2)
 
 
-let addResult = calculator.calculate(oper: "+")
-let subtractResult = calculator.calculate(oper: "-")
-let multiplyResult = calculator.calculate(oper: "*")
-let divideResult = calculator.calculate(oper: "/")
+let addResult = calculator.calculate("+")
+let subtractResult = calculator.calculate("-")
+let multiplyResult = calculator.calculate("*")
+let divideResult = calculator.calculate("/")
 
 print("addResult: \(addResult)")
 print("subtractResult: \(subtractResult)")
 print("multiplyResult: \(multiplyResult)")
 print("divideResult: \(divideResult)")
 
-let wrongOperator = calculator.calculate(oper: " ")
+let wrongOperator = calculator.calculate(" ")
 print("wrongOperator: \(wrongOperator)")
 
