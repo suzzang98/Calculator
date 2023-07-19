@@ -1,50 +1,78 @@
 class Calculator {
-
-    init (){
-
+    var firstNumber: Double
+    var secondNumber: Double
+    
+    init(firstNumber: Double, secondNumber: Double) {
+        self.firstNumber = firstNumber
+        self.secondNumber = secondNumber
     }
     
-    func calculate(oper: String, firstNumber: Double, secondNumber: Double)-> Double{
-        var result: Double = 0
-        if oper == "+" {
-            result = firstNumber + secondNumber
+    func calculate(_ oper: String) -> Double {
+        var operation: AbstractOperation
+        switch oper {
+        case "+":
+            operation = AddOperation()
+        case "-":
+            operation = SubtractOperation()
+        case "*":
+            operation = MultiplyOperation()
+        case "/":
+            operation = DivideOperation()
+        default:
+            print("\n올바르지 않은 연산자입니다.")
+            return 0
         }
-        else if oper == "-" {
-            result = firstNumber - secondNumber
-        }
-        else if oper == "*" {
-            result = firstNumber * secondNumber
-        }
-        else if oper == "/" {
-            // 나눗셈일 경우 secondNumber가 0일 경우 추가
-            if secondNumber == 0{
-                print("\n\nsecondNumber은 0일 수 없습니다.")
-            } else {
-                result = firstNumber / secondNumber
-            }
-        }
-        else{
-            // +, -, *, / 이외의 연산자가 들어왔을 때의 출력
-            print("\n\n정확한 연산자를 입력하세요")
-        }
-        return result
-
+        return operation.operate(firstNumber: firstNumber, secondNumber: secondNumber)
+    }
+}
+class AbstractOperation {
+    func operate(firstNumber: Double, secondNumber: Double) -> Double {
+        return 0
+    }
+}
+class AddOperation: AbstractOperation {
+    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
+        return firstNumber + secondNumber
     }
 }
 
-let cal = Calculator()
-let addResult = cal.calculate(oper: "+", firstNumber: 10, secondNumber: 5)
-let subtractResult = cal.calculate(oper: "-", firstNumber: 10, secondNumber: 5)
-let multiplyResult = cal.calculate(oper: "*", firstNumber: 10, secondNumber: 5)
-let divideResult = cal.calculate(oper: "/", firstNumber: 10, secondNumber: 5)
+class SubtractOperation: AbstractOperation {
+    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
+        return firstNumber - secondNumber
+    }
+}
 
-print("addResult : \(addResult)")
-print("subtractResult : \(subtractResult)")
-print("multiplyResult : \(multiplyResult)")
-print("divideResult : \(divideResult)")
+class MultiplyOperation: AbstractOperation {
+    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
+        return firstNumber * secondNumber
+    }
+}
 
-let wrongOperator = cal.calculate(oper: " ", firstNumber: 10, secondNumber: 5)
-print("wrongOperator : \(wrongOperator)")
+class DivideOperation: AbstractOperation {
+    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
+        if secondNumber == 0 {
+            print("\nzeroDivisionError")
+            return 0
+        }
+        return firstNumber / secondNumber
+    }
+}
 
-let wrongSecondNum = cal.calculate(oper : "/", firstNumber: 10, secondNumber: 0)
-print("wrongSecondNum : \(wrongSecondNum)")
+
+
+let calculator = Calculator(firstNumber: 10, secondNumber: 2)
+
+
+let addResult = calculator.calculate("+")
+let subtractResult = calculator.calculate("-")
+let multiplyResult = calculator.calculate("*")
+let divideResult = calculator.calculate("/")
+
+print("addResult: \(addResult)")
+print("subtractResult: \(subtractResult)")
+print("multiplyResult: \(multiplyResult)")
+print("divideResult: \(divideResult)")
+
+let wrongOperator = calculator.calculate(" ")
+print("wrongOperator: \(wrongOperator)")
+
