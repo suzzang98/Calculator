@@ -1,15 +1,15 @@
 class Calculator {
-    var firstNumber: Double
-    var secondNumber: Double
+    var firstNumber : Double
+    var secondNumber :Double
     
-    init(firstNumber: Double, secondNumber: Double) {
+    init (firstNumber: Double, secondNumber: Double) {
         self.firstNumber = firstNumber
         self.secondNumber = secondNumber
     }
     
-    func calculate(oper: String) -> Double {
-        var operation: AbstractOperation
-        switch oper {
+    func calculate(oper : String)-> Double{
+        var operation : AbstractOperation
+        switch oper{
         case "+":
             operation = AddOperation()
         case "-":
@@ -25,32 +25,32 @@ class Calculator {
         return operation.operate(firstNumber: firstNumber, secondNumber: secondNumber)
     }
 }
-class AbstractOperation {
-    func operate(firstNumber: Double, secondNumber: Double) -> Double {
+class AbstractOperation{
+    func operate(firstNumber: Double, secondNumber: Double) -> Double{
         return 0
     }
 }
-class AddOperation: AbstractOperation {
-    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
+class AddOperation : AbstractOperation{
+    override func operate(firstNumber: Double, secondNumber:Double) -> Double{
         return firstNumber + secondNumber
     }
 }
 
-class SubtractOperation: AbstractOperation {
-    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
+class SubtractOperation : AbstractOperation{
+    override func operate(firstNumber: Double, secondNumber:Double) -> Double{
         return firstNumber - secondNumber
     }
 }
 
-class MultiplyOperation: AbstractOperation {
-    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
+class MultiplyOperation : AbstractOperation{
+    override func operate(firstNumber: Double, secondNumber:Double) -> Double{
         return firstNumber * secondNumber
     }
 }
 
-class DivideOperation: AbstractOperation {
-    override func operate(firstNumber: Double, secondNumber: Double) -> Double {
-        if secondNumber == 0 {
+class DivideOperation : AbstractOperation{
+    override func operate(firstNumber: Double, secondNumber:Double) -> Double{
+        if secondNumber == 0{
             print("\nzeroDivisionError")
             return 0
         }
@@ -68,11 +68,11 @@ let subtractResult = calculator.calculate(oper: "-")
 let multiplyResult = calculator.calculate(oper: "*")
 let divideResult = calculator.calculate(oper: "/")
 
-print("addResult: \(addResult)")
-print("subtractResult: \(subtractResult)")
-print("multiplyResult: \(multiplyResult)")
-print("divideResult: \(divideResult)")
+print("addResult : \(addResult)")
+print("subtractResult : \(subtractResult)")
+print("multiplyResult : \(multiplyResult)")
+print("divideResult : \(divideResult)")
 
 let wrongOperator = calculator.calculate(oper: " ")
-print("wrongOperator: \(wrongOperator)")
+print("wrongOperator : \(wrongOperator)")
 
